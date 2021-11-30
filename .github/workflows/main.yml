@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+name: CI/CD
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the staging branch
+  push:
+    branches: [ production ]
+  pull_request:
+    branches: [ production ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+env:
+  env_var: $GITHUB_REPOSITORY
+  branch_: ${GITHUB_REF#refs/heads/}
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build_job:
+    name: test_var
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build 
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo ${{{env.branch_}.secrets.ACR_Pull}}
+          echo ${{env.env_var}}
+    
+  #build-api:
+  #  uses: kalasub/vizzuality_mgis-main/.github/workflows/build-template.yml@kalasub-patch-1
+  #  with: 
+  #    servicename: mgis-api
+  #  secrets:
+  #    ACR: ${{secrets.ACR}}
