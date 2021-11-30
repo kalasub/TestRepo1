@@ -23,7 +23,7 @@ jobs:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
-          echo ${{{env.branch_}.secrets.ACR_Pull}}
+          echo ${{${{env.branch_}}.secrets.ACR_Pull}}
           echo ${{env.env_var}}
     
   #build-api:
