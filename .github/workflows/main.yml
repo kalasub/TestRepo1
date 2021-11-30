@@ -17,13 +17,14 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_job:
+    environment: ${{env.branch_}}
     name: test_var
     runs-on: ubuntu-latest
     steps:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
-          echo ${{${{env.branch_}}.secrets.ACR_Pull}}
+          echo ${{secrets.ACR_Pull}}
           echo ${{env.env_var}}
     
   #build-api:
