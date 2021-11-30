@@ -14,7 +14,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_job:
-    environment: ${GITHUB_REF#refs/heads/}
+    environment: "${{GITHUB_REF#refs/heads/}}"
     name: test_var
     runs-on: ubuntu-latest
     steps:
