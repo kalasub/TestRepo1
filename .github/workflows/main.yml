@@ -21,7 +21,7 @@ jobs:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
-          echo "${{ {GITHUB_REF#refs/heads/}.secrets.ACR_PULL }}"
+          echo "${GITHUB_REF#refs/heads/}.${{secrets.ACR_PULL }}"
     
   #build-api:
   #  uses: kalasub/vizzuality_mgis-main/.github/workflows/build-template.yml@kalasub-patch-1
