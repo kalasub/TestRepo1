@@ -11,9 +11,6 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-env:
-  env_var: $GITHUB_REPOSITORY
-  branch_: ${GITHUB_REF#refs/heads/}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_job:
@@ -24,8 +21,7 @@ jobs:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
-          echo ${{secrets.ACR_Pull}}
-          echo ${{env.env_var}}
+          echo ${{secrets.ACR_PULL}}
     
   #build-api:
   #  uses: kalasub/vizzuality_mgis-main/.github/workflows/build-template.yml@kalasub-patch-1
