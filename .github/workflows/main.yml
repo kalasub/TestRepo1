@@ -14,12 +14,11 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_job:
+    environment: production
     name: test_var
     runs-on: ubuntu-latest
     steps:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
-          echo "${{env.stats}}"
-    env:
-      stats: ${{production.secrets.ACR_PULL }}
+          echo "${{secrets.ACR_PULL}}"
