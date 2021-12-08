@@ -14,18 +14,10 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_job:
-    environment: "${GITHUB_REF#refs/heads/}"
     name: test_var
     runs-on: ubuntu-latest
     steps:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
-          echo "${GITHUB_REF#refs/heads/}.${{secrets.ACR_PULL }}"
-    
-  #build-api:
-  #  uses: kalasub/vizzuality_mgis-main/.github/workflows/build-template.yml@kalasub-patch-1
-  #  with: 
-  #    servicename: mgis-api
-  #  secrets:
-  #    ACR: ${{secrets.ACR}}
+          echo "${{production.secrets.ACR_PULL }}"
