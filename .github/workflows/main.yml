@@ -20,4 +20,6 @@ jobs:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
-          echo "${{production.secrets.ACR_PULL }}"
+          echo "${{env.stats}}"
+    env:
+      stats: ${{production.secrets.ACR_PULL }}
