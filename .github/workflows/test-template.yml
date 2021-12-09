@@ -7,6 +7,9 @@ on:
       servicename:
         required: true
         type: string
+      env:
+        required: true
+        type: string
         
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,7 +23,7 @@ jobs:
         run: |
           echo $GITHUB_REPOSITORY
           echo ${{inputs.servicename}}
-          echo "${{secrets.ACR_PULL}}"
+          echo "${{inputs.env.secrets.ACR_PULL}}"
           
 
   staging-build_job:
