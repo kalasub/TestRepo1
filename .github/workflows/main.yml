@@ -12,6 +12,6 @@ on:
   
 jobs:
   build-api:
-    uses: kalasub/TestRepo1/.github/workflows/template/test-template.yml@production
+    uses: kalasub/TestRepo1/.github/workflows/test-template.yml@production
     with: 
       servicename: build-it
