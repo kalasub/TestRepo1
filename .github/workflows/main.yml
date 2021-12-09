@@ -1,0 +1,38 @@
+name: Workflow process
+
+on:
+  # Triggers the workflow on push or pull request events but only for the staging branch
+  push:
+    branches: [ production, staging ]
+  pull_request:
+    branches: [ production, staging ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  #build-api:
+  #  uses: kalasub/TestRepo1/.github/workflows/test-template.yml@production
+  #  with: 
+  #    servicename: build-it
+  build_job:
+    environment: production
+    if: contains('refs/heads/production',github.ref)
+    name: test_var
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build 
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo "${{secrets.ACR_PULL}}"
+          
+  staging-build_job:
+    environment: staging
+    if: contains('refs/heads/staging',github.ref)
+    name: staging_test_var
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build 
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo "${{secrets.ACR_PULL}}"
