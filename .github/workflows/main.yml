@@ -11,10 +11,12 @@ on:
   workflow_dispatch:
   
 jobs:
-  #build-api:
-  #  uses: kalasub/TestRepo1/.github/workflows/test-template.yml@production
-  #  with: 
-  #    servicename: build-it
+  build-api:
+    uses: kalasub/TestRepo1/.github/workflows/test-template.yml@production
+    with: 
+      env: production
+      servicename: build-it
+  
   build_job:
     environment: production
     if: contains('refs/heads/production',github.ref)
