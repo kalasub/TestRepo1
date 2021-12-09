@@ -20,17 +20,17 @@ jobs:
         run: |
           echo $GITHUB_REPOSITORY
           echo ${{inputs.servicename}}
-          echo ${{secrets.ACR_PULL}}
+          echo "${{secrets.ACR_PULL}}"
           
 
   staging-build_job:
     if: contains('refs/heads/staging',github.ref)
     environment: staging
-    name: test_var
+    name: staging_test_var
     runs-on: ubuntu-latest
     steps:
       - name: Build 
         run: |
           echo $GITHUB_REPOSITORY
           echo ${{inputs.servicename}}
-          echo ${{secrets.ACR_PULL}}
+          echo "${{secrets.ACR_PULL}}"
