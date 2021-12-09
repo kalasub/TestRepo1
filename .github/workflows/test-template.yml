@@ -11,8 +11,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_job:
-    if: contains('refs/heads/production',github.ref)
     environment: production
+    if: contains('refs/heads/production',github.ref)
     name: test_var
     runs-on: ubuntu-latest
     steps:
@@ -24,8 +24,8 @@ jobs:
           
 
   staging-build_job:
-    if: contains('refs/heads/staging',github.ref)
     environment: staging
+    if: contains('refs/heads/staging',github.ref)
     name: staging_test_var
     runs-on: ubuntu-latest
     steps:
