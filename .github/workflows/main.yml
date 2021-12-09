@@ -11,7 +11,28 @@ on:
   workflow_dispatch:
   
 jobs:
-  build-api:
-    uses: kalasub/TestRepo1/.github/workflows/test-template.yml@production
-    with: 
-      servicename: build-it
+  #build-api:
+  #  uses: kalasub/TestRepo1/.github/workflows/test-template.yml@production
+  #  with: 
+  #    servicename: build-it
+  build_job:
+    environment: production
+    if: contains('refs/heads/production',github.ref)
+    name: test_var
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build 
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo "${{secrets.ACR_PULL}}"
+          
+  staging-build_job:
+    environment: staging
+    if: contains('refs/heads/staging',github.ref)
+    name: staging_test_var
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build 
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo "${{secrets.ACR_PULL}}"
