@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+name: CI/CD
+
+on:
+  workflow_call:
+    inputs:
+      servicename:
+        required: true
+        type: string
+        
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build_job:
+    if: contains('refs/heads/production',github.ref)
+    environment: production
+    name: test_var
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build 
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo ${{inputs.servicename}}
+          echo ${{secrets.ACR_PULL}}
+          
+
+  staging-build_job:
+    if: contains('refs/heads/staging',github.ref)
+    environment: staging
+    name: test_var
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build 
+        run: |
+          echo $GITHUB_REPOSITORY
+          echo ${{inputs.servicename}}
+          echo ${{secrets.ACR_PULL}}
